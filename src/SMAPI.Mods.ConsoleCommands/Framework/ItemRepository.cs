@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.Xna.Framework.Content;
 using StardewValley;
-using StardewValley.GameData.FishPond;
+using StardewValley.GameData.FishPonds;
 using StardewValley.ItemTypeDefinitions;
 using StardewValley.Objects;
 using SObject = StardewValley.Object;
