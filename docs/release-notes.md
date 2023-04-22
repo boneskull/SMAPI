@@ -10,6 +10,7 @@
 ## Upcoming release
 * For players:
   * Added support for overriding SMAPI configuration per `Mods` folder (thanks to Shockah!).
+  * In multiplayer, the game/SMAPI window titles now show whether you're the main player or a farmhand.
   * Fixed logged SMAPI errors not having line numbers on Linux/macOS.
 
 * For mod authors:
