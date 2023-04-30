@@ -16,6 +16,9 @@
 * For mod authors:
   * Added support for [custom update manifests](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs/Update_checks#Custom_update_manifest) (thanks to Jamie Taylor!).
 
+* For SMAPI toolkit users:
+  * Fixed `ModFolder` not being JSON-serializable.
+
 ## 3.18.3
 Released 09 April 2023 for Stardew Valley 1.5.6 or later.
 
