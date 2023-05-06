@@ -15,6 +15,7 @@ using StardewValley.GameData.Buildings;
 using StardewValley.GameData.Characters;
 using StardewValley.GameData.Crops;
 using StardewValley.GameData.FarmAnimals;
+using StardewValley.GameData.FloorsAndPaths;
 using StardewValley.GameData.FruitTrees;
 using StardewValley.GameData.LocationContexts;
 using StardewValley.GameData.Tools;
@@ -343,6 +344,10 @@ namespace StardewModdingAPI.Metadata
                         this.UpdateFarmAnimalData();
                     return true;
 
+                case "data/floorsandpaths": // Game1.LoadContent
+                    Game1.floorPathData = content.Load<Dictionary<string, FloorPathData>>("Data\\FloorsAndPaths");
+                    return true;
+
                 case "data/furniture": // FurnitureDataDefinition
                     ItemRegistry.ResetCache();
                     return true;
@@ -358,8 +363,8 @@ namespace StardewModdingAPI.Metadata
                     ItemRegistry.ResetCache();
                     return true;
 
-                case "data/locationcontexts": // GameLocation.LocationContext
-                    this.UpdateLocationContexts();
+                case "data/locationcontexts": // Game1.LoadContent
+                    Game1.locationContextData = content.Load<Dictionary<string, LocationContextData>>("Data\\LocationContexts");
                     return true;
 
                 case "data/movies": // MovieTheater.GetMovieData
@@ -501,20 +506,6 @@ namespace StardewModdingAPI.Metadata
         /****
         ** Update data methods
         ****/
-        /// <summary>Update location context data.</summary>
-        private void UpdateLocationContexts()
-        {
-            //
-            // cached contexts will be reloaded on demand if null
-            //
-
-            foreach (string fieldName in new[] { "_defaultContext", "_islandContext" })
-                this.Reflection.GetField<LocationContextData?>(typeof(LocationContext), fieldName).SetValue(null);
-
-            foreach (GameLocation location in this.GetLocations())
-                location.locationContext = null;
-        }
-
         /// <summary>Update the data for matching farm animals.</summary>
         /// <returns>Returns whether any farm animals were updated.</returns>
         /// <remarks>Derived from the <see cref="FarmAnimal"/> constructor.</remarks>
